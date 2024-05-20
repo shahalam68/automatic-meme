@@ -1,4 +1,3 @@
-import { useUpdateSetsName } from "@/hook/pokemon-set-hooks";
 import { useSets } from "@/hook/useSets";
 import { QueryKeys } from "@/models/enums";
 import { getAllSets } from "@/service/pokemon.service";
@@ -7,7 +6,6 @@ import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Set } from "pokemon-tcg-sdk-typescript/dist/sdk";
-import { useState } from "react";
 
 export const getStaticProps: GetStaticProps<{
   dehydratedState: DehydratedState;
@@ -29,8 +27,6 @@ const SetList = (props: any) => {
   console.log(props);
 
   const { data: sets, isLoading, isError } = useSets();
-  const { mutate: updateName } = useUpdateSetsName();
-  const [setName, setSetName] = useState('');
 
   // Sort the sets data by release date in descending order
   const sortedSets = sets?.slice().sort((a: Set, b: Set) => {
@@ -40,37 +36,25 @@ const SetList = (props: any) => {
   });
 
   return (
-    <div className="px-3 flex flex-wrap">
+    <div className="px-3 flex flex-wrap gap-3 justify-center ">
       {isLoading && "Loading.."}
       {sortedSets?.map((set: Set) => {
         return (
-          <div key={set.id} className="flex px-3 flex-col">
+          <div key={set.id} className="w-1/5 px-3 ">
             <Link href={`sets/${set.id}`}>
-              <div className="relative w-[100px] h-[100px]">
-                <Image src={set?.images.logo || ""} fill alt="set logo" />
+              <div className="relative w-full h-[100px] mb-4 ">
+                <Image
+                  src={set?.images.logo || ""}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="set logo"
+                />
               </div>
-              <div>{set?.name || "loading.."}</div>
+              <div className="text-center">{set?.name || "loading.."}</div>
             </Link>
-            <div>
-              <input
-                name="set-name"
-                type="text"
-                placeholder="Edit Set Name"
-                onKeyUp={(e) => {
-                  setSetName(e.currentTarget.value);
-                }}
-              />
-              <button
-                onClick={() => {
-                  if (setName) {
-                    updateName({
-                      setId: set.id,
-                      setName: setName,
-                    });
-                  }
-                }}
-              >
-                Edit Set Name
+            <div className="w-full flex justify-center mt-6">
+              <button className="border-2 border-yellow-500 hover:border-yellow-500 rounded-lg px-4 py-2 font-bold text-gray-800 hover:bg-yellow-500 transition duration-300 ease-in-out">
+                Quick View
               </button>
             </div>
           </div>

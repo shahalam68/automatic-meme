@@ -15,11 +15,12 @@ const Header = () => {
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
+              <Link href='/'>
               <img
                 className="h-8 w-auto"
                 src="/International_Pokémon_logo.png"
                 alt="Pokémon Logo"
-              />
+              /></Link>
             </a>
           </div>
           <div className="flex lg:hidden">
