@@ -39,13 +39,11 @@ const ActiveSlider = () => {
       >
         {ServiceData.map((item, index) => (
           <SwiperSlide key={item.backgroundImage}>
-            <div className="flex flex-col  shadow-lg text-white px-6 py-8 h-[300px] w-[100px]  cursor-pointer">
-              
-              <div className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden ">
-                <img className=" transition duration-300 ease-in-out hover:scale-110" src={item.backgroundImage} alt="" />
+            <div className="flex flex-col shadow-lg text-white px-6 py-8 h-[400px] w-[100px] cursor-pointer">
+              <div className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden">
+                <img className="transition duration-300 ease-in-out hover:scale-110" src={item.backgroundImage} alt="" />
               </div>
               {/* Add other content for each slide */}
-              
             </div>
           </SwiperSlide>
         ))}

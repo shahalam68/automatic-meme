@@ -36,7 +36,7 @@ const SetList = (props: any) => {
   });
 
   return (
-    <div className="px-3 flex flex-wrap gap-3 justify-center ">
+    <div className="px-3 flex flex-wrap gap-6 mt-4 justify-center ">
       {isLoading && "Loading.."}
       {sortedSets?.map((set: Set) => {
         return (
