@@ -9,6 +9,8 @@ import Link from "next/link";
 import { Set } from "pokemon-tcg-sdk-typescript/dist/sdk";
 import { useState } from "react";
 
+import { PokemonTCG } from "pokemon-tcg-sdk-typescript";
+
 export const getStaticProps: GetStaticProps<{
   dehydratedState: DehydratedState;
 }> = async () => {
@@ -24,7 +26,7 @@ export const getStaticProps: GetStaticProps<{
   return { props: { dehydratedState: dehydrate(queryClient) }, revalidate: 30 };
 };
 
-const SetList = (props: any) => {
+const SetList = (props: {item:PokemonTCG.Set}) => {
   const { data: sets, isLoading, isError } = useSets();
   const sortedSets = sets?.slice().sort((a: Set, b: Set) => {
     const dateA = new Date(a.releaseDate);
@@ -33,9 +35,9 @@ const SetList = (props: any) => {
   });
 
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedSet, setSelectedSet] = useState<Set | null>(null);
+  const [selectedSet, setSelectedSet] = useState< any>(null);
 
-  const handleModalOpen = (set: Set) => {
+  const handleModalOpen = (set:any) => {
     setShowModal(true);
     setSelectedSet(set);
   };
