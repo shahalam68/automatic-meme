@@ -1,25 +1,24 @@
+import { Set } from "pokemon-tcg-sdk-typescript/dist/sdk";
 import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 
 interface ModalProps {
-    showModal: boolean;
+    // showModal: boolean;
     handleModalClose: () => void;
-    set: Set;
+    set: Set | null;
 }
 
-interface Set {
-    id: string;
-    name: string;
-    releaseDate: string;
-    images: {
-        logo: string;
+// export interface Set {
+//     id: string;
+//     name: string;
+//     releaseDate: string;
+//     images: {
+//         logo: string;
 
-        // Other image properties
-    };
-    // Other properties of the Set type
-}
+//     };
+// }
 
-const Modal: React.FC<ModalProps> = ({ showModal, handleModalClose, set }) => {
+const Modal: React.FC<ModalProps> = ({  handleModalClose, set }) => {
     console.log(set);
     const {name,images} = set;
     return (
