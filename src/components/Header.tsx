@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import useUserStore from "@/store/login-store";
 import Cart from "./Cart";
+import { useCartStore } from "@/store/cart-store";
 
 const Header = () => {
+  
+  const cart = useCartStore((state) => state.cart);
+
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const username = useUserStore((state) => state.username);
   const logout = useUserStore((state) => state.logout);
@@ -90,6 +94,11 @@ const Header = () => {
           <div className="ml-2 text-lg">
             <button onClick={handleShowCart}>
               <IoCartOutline />
+              {cart.length > 0 && (
+                <span className="rounded-full absolute top-[12px] left[28px]  text-yellow-600 text-sm text-center p-[2px] w-[25px] h-[25px]">
+                  {cart.length}
+                </span>
+              )}
             </button>
           </div>
         </nav>
