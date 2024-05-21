@@ -1,9 +1,12 @@
 
+import { useCartStore } from "@/store/cart-store";
 import { IoCartOutline } from "react-icons/io5";
 
 
 const Modal: React.FC<any> = ({  handleModalClose, set }) => {
-    console.log(set);
+
+    const addToCart = useCartStore((state) => state.addToCart)
+    // console.log(set);
     const {images,name} = set;
     return (
         <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -23,13 +26,15 @@ const Modal: React.FC<any> = ({  handleModalClose, set }) => {
                         </div>
                         
                         <div className="grid lg:grid-cols-2 gap-2">
-                            <a
-                                className="bg-yellow-600 rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
-                                href="#"
-                            >
+                            <button onClick={() => addToCart(set)} className="bg-yellow-600 rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm">
+                            
+                                
+                                
+                            
                                 <IoCartOutline />
                                 Add to Cart
-                            </a>
+                           
+                            </button>
                             <button
                                 className="border border-[#74766F] rounded-lg py-2 px-5 flex items-center justify-center gap-2 font-semibold text-sm"
                                 onClick={handleModalClose}

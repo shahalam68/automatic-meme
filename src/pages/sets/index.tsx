@@ -48,7 +48,8 @@ const SetList = (props: {item:PokemonTCG.Set}) => {
   };
 
   return (
-    <div className="px-3 flex flex-wrap gap-6 mt-4 justify-center">
+   <div>
+     <div className="px-3 flex flex-wrap gap-6 mt-4 justify-center">
       {isLoading && "Loading.."}
       {sortedSets?.map((set: Set) => {
         return (
@@ -80,6 +81,7 @@ const SetList = (props: {item:PokemonTCG.Set}) => {
       )}
       {isError && "Error"}
     </div>
+   </div>
   );
 };
 
