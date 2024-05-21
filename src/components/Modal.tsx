@@ -1,30 +1,10 @@
-// import { Set } from "pokemon-tcg-sdk-typescript/dist/sdk";
-// import {Pokemo}
-// import React from "react";
+
 import { IoCartOutline } from "react-icons/io5";
 
-// interface ModalProps {
-//     // showModal: boolean;
-//     handleModalClose: () => void;
-//     set: any | null;
-    
-// }
-
-// export interface Set {
-//     id: string;
-//     name: string;
-//     releaseDate: string;
-//     images: {
-//         logo: string;
-
-//     };
-// }
 
 const Modal: React.FC<any> = ({  handleModalClose, set }) => {
     console.log(set);
     const {images,name} = set;
-    // const {name : string | null,images} = set ;
-    // const {logo} = images;
     return (
         <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">

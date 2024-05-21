@@ -1,26 +1,38 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import useUserStore from "@/store/login-store";
+import Cart from "./Cart";
 
 const Header = () => {
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const username = useUserStore((state) => state.username);
   const logout = useUserStore((state) => state.logout);
-
+  const [showCart, setShowCart] = useState<boolean>(false);
+  const handleShowCart = () => {
+    setShowCart(true);
+  };
+  const handleCloseCart = () => {
+    setShowCart(false);
+  };
   return (
     <div>
+      {showCart && <Cart handleCloseCart ={handleCloseCart} />}
       <header className="bg-white">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <nav
+          className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+          aria-label="Global"
+        >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Link href='/'>
-              <img
-                className="h-8 w-auto"
-                src="/International_Pokémon_logo.png"
-                alt="Pokémon Logo"
-              /></Link>
+              <Link href="/">
+                <img
+                  className="h-8 w-auto"
+                  src="/International_Pokémon_logo.png"
+                  alt="Pokémon Logo"
+                />
+              </Link>
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -76,11 +88,11 @@ const Header = () => {
             )}
           </div>
           <div className="ml-2 text-lg">
-            <IoCartOutline />
+            <button onClick={handleShowCart}>
+              <IoCartOutline />
+            </button>
           </div>
         </nav>
-        {/* Mobile menu */}
-        {/* Mobile menu */}
       </header>
       <hr />
     </div>

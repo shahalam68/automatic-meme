@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const HomeSlider = () => {
@@ -59,9 +60,11 @@ const HomeSlider = () => {
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center ">
               
+              <Link href="/sets">
               <button className="border-2 border-yellow-500 text-lg hover:border-yellow-500 rounded-lg px-4 py-2 mt-20 font-bold text-gray-800 hover:bg-yellow-500 transition duration-300 ease-in-out">
                 {buttonText}
               </button>
+              </Link>
             </div>
           </div>
         ))}
