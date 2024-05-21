@@ -11,6 +11,7 @@ const Cart: React.FC<any>  = ({handleCloseCart}) => {
                 Shopping Cart
               </h2>
               <button
+              onClick={handleCloseCart}
                 type="button"
                 className="text-gray-400 hover:text-gray-500"
               >
